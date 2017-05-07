@@ -1,2 +1,2 @@
-# TeamSpeak3DynamicBanner
+# XARON TeamSpeak3DynamicBanner
 GET IN OVER HERE!
