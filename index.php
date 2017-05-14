@@ -23,7 +23,7 @@ $ayarlar['apiKey'] = 'THERE'; // "apixu.com" Api Key
 $resimler = ['arkaplan.png','arkaplan2.png']; // Background's
 
 $ts3Baglan = TeamSpeak3::factory('serverquery://'.$ayarlar['queryAdi'].':'.$ayarlar['querySifre'].'@'.$ayarlar['host'].':'.$ayarlar['queryPort'].'/?server_port='.$ayarlar['sunucuPort'].'&blocking=0&nickname='.urlencode($ayarlar['botAdi']));
-$clientListe = $ts3Baglan->clientList(array('connection_client_ip' => $_SERVER['REMOTE_ADDR']));
+$clientListe = $ts3Baglan->clientList(array('connection_client_ip' => $_SERVER["REMOTE_ADDR"]));
 
 foreach($clientListe as $clientListeYaz)
 {
@@ -93,7 +93,7 @@ if($query->getElement('success', $query->connect()))
 	imagettftext($resim, 33, 0, 25, 165, $gri, 'CaviarDreams_Bold.ttf', date('H:i'));
 	imagettftext($resim, 29, 0, 60, 237, $gri, 'CaviarDreams_Bold.ttf', ''.$aktifKullanici.'/'.$sunucuKapasite);
 	imagettftext($resim, 15, 0, 690, 240, $beyaz, 'CaviarDreams.ttf', $sehirAdi);
-	imagettftext($resim, 10, 0, 765, 220, $beyaz, 'CaviarDreams.ttf', $sehirKacDerece.'°');
+	imagettftext($resim, 10, 0, 765, 220, $beyaz, 'CaviarDreams.ttf', $sehirKacDerece.'Â°');
 	imagecopy($resim, $fligram, imagesx($resim) - $konum_x - 35, imagesy($resim) - $konum_y - 25, 0, 0, imagesx($fligram), imagesy($fligram));
 	
 }
