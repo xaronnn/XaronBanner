@@ -88,12 +88,12 @@ if($query->getElement('success', $query->connect()))
 	$aktifKullanici = ($normalClient - $queryClient);
 	
 	//imagettftext($resim, 25, 0, 285, 55, $beyaz, 'CaviarDreams.ttf', $sunucuAdi);
-	imagettftext($resim, 17, 0, 430, 150, $beyaz, 'CaviarDreams.ttf', 'Welcome '.$clientAdYaz.'!');
-	imagettftext($resim, 14, 0, 23, 115, $gri, 'CaviarDreams_Bold.ttf', strftime('%e %B %Y'));
-	imagettftext($resim, 33, 0, 25, 165, $gri, 'CaviarDreams_Bold.ttf', date('H:i'));
-	imagettftext($resim, 29, 0, 60, 237, $gri, 'CaviarDreams_Bold.ttf', ''.$aktifKullanici.'/'.$sunucuKapasite);
-	imagettftext($resim, 15, 0, 690, 240, $beyaz, 'CaviarDreams.ttf', $sehirAdi);
-	imagettftext($resim, 10, 0, 765, 220, $beyaz, 'CaviarDreams.ttf', $sehirKacDerece.'°');
+	imagettftext($resim, 17, 0, 430, 150, $beyaz, './CaviarDreams.ttf', 'Welcome '.$clientAdYaz.'!');
+	imagettftext($resim, 14, 0, 23, 115, $gri, './CaviarDreams_Bold.ttf', strftime('%e %B %Y'));
+	imagettftext($resim, 33, 0, 25, 165, $gri, './CaviarDreams_Bold.ttf', date('H:i'));
+	imagettftext($resim, 29, 0, 60, 237, $gri, './CaviarDreams_Bold.ttf', ''.$aktifKullanici.'/'.$sunucuKapasite);
+	imagettftext($resim, 15, 0, 690, 240, $beyaz, './CaviarDreams.ttf', $sehirAdi);
+	imagettftext($resim, 10, 0, 765, 220, $beyaz, './CaviarDreams.ttf', $sehirKacDerece.'°');
 	imagecopy($resim, $fligram, imagesx($resim) - $konum_x - 35, imagesy($resim) - $konum_y - 25, 0, 0, imagesx($fligram), imagesy($fligram));
 	
 }
