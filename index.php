@@ -20,6 +20,7 @@ $ayarlar['queryPort'] = 10011; //Query Port
 $ayarlar['sunucuPort'] = 9987; //Server Port
 $ayarlar['botAdi'] = 'GET IN OVER HERE!'; //Bot Name
 $ayarlar['apiKey'] = 'THERE'; // "apixu.com" Api Key
+$ayarlar['apiBlazing'] = 'free'; // "api.blazinglayer.co.uk" Api Key
 $resimler = ['arkaplan.png','arkaplan2.png']; // Background's
 
 $ts3Baglan = TeamSpeak3::factory('serverquery://'.$ayarlar['queryAdi'].':'.$ayarlar['querySifre'].'@'.$ayarlar['host'].':'.$ayarlar['queryPort'].'/?server_port='.$ayarlar['sunucuPort'].'&blocking=0&nickname='.urlencode($ayarlar['botAdi']));
@@ -50,7 +51,7 @@ function ipAdresindenSehir($ip = null){
         }
     }
 
-    $json = file_get_contents('http://ipinfo.io/'.$ip);
+    $json = file_get_contents('http://api.blazinglayer.co.uk/ip/json/'.$ip.'/'.$ayarlar['apiBlazing']);
     $detaylar = json_decode($json);
     return $detaylar;
 }
