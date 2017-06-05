@@ -1,10 +1,10 @@
 <?php
 /*
  Author: XARON
- File: TeamSpeak3DynamicBanner
- Last Update: 07.05.2017 12:43
+ File: TeamSpeak3DynamicBanner: Main
+ Last Update: 05.06.2017 13:50
 
- GET IN OVER HERE! :)
+www.facebook.com/XARONNN
 */
 header('Content-type: image-png; charset=utf-8');
 error_reporting(E_ALL);
@@ -20,8 +20,10 @@ $ayarlar['queryPort'] = 10011; //Query Port
 $ayarlar['sunucuPort'] = 9987; //Server Port
 $ayarlar['botAdi'] = 'GET IN OVER HERE!'; //Bot Name
 $ayarlar['apiKey'] = 'THERE'; // "apixu.com" Api Key
+$ayarlar['dil'] = 'turkish'; // Language ("turkish", "english") etc..
 $resimler = ['arkaplan.png','arkaplan2.png']; // Background's
 
+setlocale(LC_ALL, $ayarlar['dil']);
 $ts3Baglan = TeamSpeak3::factory('serverquery://'.$ayarlar['queryAdi'].':'.$ayarlar['querySifre'].'@'.$ayarlar['host'].':'.$ayarlar['queryPort'].'/?server_port='.$ayarlar['sunucuPort'].'&blocking=0&nickname='.urlencode($ayarlar['botAdi']));
 $clientListe = $ts3Baglan->clientList(array('connection_client_ip' => $_SERVER["REMOTE_ADDR"]));
 
