@@ -2,7 +2,7 @@
 /*
  Author: XARON
  File: TeamSpeak3DynamicBanner: Main
- Last Update: 05.06.2017 13:50
+ Last Update: 05.06.2017 13:51
 
 www.facebook.com/XARONNN
 */
