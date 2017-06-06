@@ -2,7 +2,7 @@
 /*
  Author: XARON
  File: TeamSpeak3DynamicBanner: Main
- Last Update: 05.06.2017 13:51
+ Last Update: 05.06.2017 13:50
 
 www.facebook.com/XARONNN
 */
@@ -13,25 +13,26 @@ require_once('TeamSpeak3/TeamSpeak3.php');
 
 $ayarlar = array();
 $resimler = array();
-$ayarlar['host'] = '127.0.0.1'; //Server IP
+$ayarlar['host'] = 'localhost'; //Server IP (recommended localserver)
 $ayarlar['queryAdi'] = 'serveradmin'; //Query Name
-$ayarlar['querySifre'] = 'HELLO'; //Query Password
+$ayarlar['querySifre'] = 'yepyepyep'; //Query Password
 $ayarlar['queryPort'] = 10011; //Query Port
 $ayarlar['sunucuPort'] = 9987; //Server Port
-$ayarlar['botAdi'] = 'GET IN OVER HERE!'; //Bot Name
-$ayarlar['apiKey'] = 'THERE'; // "apixu.com" Api Key
+$ayarlar['botAdi'] = 'XARON'; //Bot Name
+$ayarlar['apiKey'] = 'APIXU.COM KEY'; // "apixu.com" Api Key
 $ayarlar['dil'] = 'turkish'; // Language ("turkish", "english") etc..
+$ayarlar['ipApi'] = 'blazinglayer'; // Api ("blazinglayer", "apixu") support ip api. (If blazinglayer api don't work, change to apixu.')
+$ayarlar['ipApiKey'] = 'free'; // Ip api key
 $resimler = ['arkaplan.png','arkaplan2.png']; // Background's
 
 setlocale(LC_ALL, $ayarlar['dil']);
 $ts3Baglan = TeamSpeak3::factory('serverquery://'.$ayarlar['queryAdi'].':'.$ayarlar['querySifre'].'@'.$ayarlar['host'].':'.$ayarlar['queryPort'].'/?server_port='.$ayarlar['sunucuPort'].'&blocking=0&nickname='.urlencode($ayarlar['botAdi']));
-$clientListe = $ts3Baglan->clientList(array('connection_client_ip' => $_SERVER["REMOTE_ADDR"]));
+$clientListe = $ts3Baglan->clientList(array('connection_client_ip' => $_SERVER['REMOTE_ADDR']));
 
 foreach($clientListe as $clientListeYaz)
 {
   $clientAdYaz = $clientListeYaz['client_nickname'];
 }
-
 
 function rastgeleSec($x) {
  return $x[rand(0, sizeof($x)-1)];
@@ -51,8 +52,8 @@ function ipAdresindenSehir($ip = null){
             $ip = getenv('REMOTE_ADDR');
         }
     }
-
-    $json = file_get_contents('http://ipinfo.io/'.$ip);
+	$apiUrl = ($ayarlar['ipApi'] == 'blazinglayer') ? $apiUrl = 'http://api.blazinglayer.co.uk/ip/json/'.$ip.'/'.$ayarlar['ipApiKey'] : $apiUrl = 'http://ipinfo.io/'.$ip ; 
+    $json = file_get_contents($apiUrl);
     $detaylar = json_decode($json);
     return $detaylar;
 }
@@ -90,12 +91,12 @@ if($query->getElement('success', $query->connect()))
 	$aktifKullanici = ($normalClient - $queryClient);
 	
 	//imagettftext($resim, 25, 0, 285, 55, $beyaz, 'CaviarDreams.ttf', $sunucuAdi);
-	imagettftext($resim, 17, 0, 430, 150, $beyaz, './CaviarDreams.ttf', 'Welcome '.$clientAdYaz.'!');
-	imagettftext($resim, 14, 0, 23, 115, $gri, './CaviarDreams_Bold.ttf', strftime('%e %B %Y'));
-	imagettftext($resim, 33, 0, 25, 165, $gri, './CaviarDreams_Bold.ttf', date('H:i'));
-	imagettftext($resim, 29, 0, 60, 237, $gri, './CaviarDreams_Bold.ttf', ''.$aktifKullanici.'/'.$sunucuKapasite);
-	imagettftext($resim, 15, 0, 690, 240, $beyaz, './CaviarDreams.ttf', $sehirAdi);
-	imagettftext($resim, 10, 0, 765, 220, $beyaz, './CaviarDreams.ttf', $sehirKacDerece.'°');
+	imagettftext($resim, 17, 0, 430, 150, $beyaz, 'CaviarDreams.ttf', 'Hosgeldin '.$clientAdYaz.'!');
+	imagettftext($resim, 14, 0, 23, 115, $gri, 'CaviarDreams_Bold.ttf', strftime('%e %B %Y'));
+	imagettftext($resim, 33, 0, 25, 165, $gri, 'CaviarDreams_Bold.ttf', date('H:i'));
+	imagettftext($resim, 29, 0, 60, 237, $gri, 'CaviarDreams_Bold.ttf', ''.$aktifKullanici.'/'.$sunucuKapasite);
+	imagettftext($resim, 15, 0, 690, 240, $beyaz, 'CaviarDreams.ttf', $sehirAdi);
+	imagettftext($resim, 10, 0, 765, 220, $beyaz, 'CaviarDreams.ttf', $sehirKacDerece.'°');
 	imagecopy($resim, $fligram, imagesx($resim) - $konum_x - 35, imagesy($resim) - $konum_y - 25, 0, 0, imagesx($fligram), imagesy($fligram));
 	
 }
