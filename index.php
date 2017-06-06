@@ -21,7 +21,7 @@ $ayarlar['sunucuPort'] = 9987; //Server Port
 $ayarlar['botAdi'] = 'XARON'; //Bot Name
 $ayarlar['apiKey'] = 'APIXU.COM KEY'; // "apixu.com" Api Key
 $ayarlar['dil'] = 'turkish'; // Language ("turkish", "english") etc..
-$ayarlar['ipApi'] = 'blazinglayer'; // Api ("blazinglayer", "apixu") support ip api. (If blazinglayer api don't work, change to apixu.')
+$ayarlar['ipApi'] = 'blazinglayer'; // Api ("blazinglayer", "apixu") support ip api. (If blazinglayer api don't work, change to apixu.)
 $ayarlar['ipApiKey'] = 'free'; // Ip api key
 $resimler = ['arkaplan.png','arkaplan2.png']; // Background's
 
