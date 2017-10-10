@@ -2,8 +2,6 @@
 
 
 
-+
-
 function GetWeather($a, $b, $c){
     @preg_match_all('/'.preg_quote($a, '/').'(.*?)'.preg_quote($b,'/').'/i', $c, $s);
     return @$s[1];
